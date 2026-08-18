@@ -52,6 +52,7 @@ jobs:
             install_status=$?
             echo "npm_install_exit_code=$install_status" >> BUILD_STATUS.txt
             if [ $install_status -ne 0 ]; then
+              echo "hexo_clean=skipped" >> BUILD_STATUS.txt
               echo "hexo_generate=skipped" >> BUILD_STATUS.txt
               exit $install_status
             fi
@@ -72,28 +73,32 @@ jobs:
           } 2>&1 | tee BUILD_LOG.txt
           exit ${PIPESTATUS[0]}
 
+      - name: Upload Pages artifact
+        id: upload
+        if: steps.pages.outcome == 'success' && steps.hexo_build.outcome == 'success'
+        continue-on-error: true
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./public
+
       - name: Record build diagnostics
         if: always()
         shell: bash
         run: |
           echo "build_step=${{ steps.hexo_build.outcome }}" >> BUILD_STATUS.txt
+          echo "upload_pages_artifact=${{ steps.upload.outcome }}" >> BUILD_STATUS.txt
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add BUILD_STATUS.txt
-          if [ "${{ steps.pages.outcome }}" != "success" ] || [ "${{ steps.hexo_build.outcome }}" != "success" ]; then
+          if [ "${{ steps.pages.outcome }}" != "success" ] || [ "${{ steps.hexo_build.outcome }}" != "success" ] || [ "${{ steps.upload.outcome }}" != "success" ]; then
             git add BUILD_LOG.txt
           fi
           git commit -m "Record Pages build diagnostics [skip ci]" || true
           git push || true
 
       - name: Stop on build failure
-        if: steps.pages.outcome != 'success' || steps.hexo_build.outcome != 'success'
+        if: steps.pages.outcome != 'success' || steps.hexo_build.outcome != 'success' || steps.upload.outcome != 'success'
         run: exit 1
-
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: ./public
 
   deploy:
     environment:
