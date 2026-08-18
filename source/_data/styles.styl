@@ -13,6 +13,69 @@ body
 .site-brand-container
   border-radius: 0
 
+.managed-home
+  margin: 0 auto 42px
+  max-width: 920px
+  padding: 28px 0 8px
+
+.managed-home__intro
+  margin-bottom: 22px
+
+.managed-home__eyebrow
+  font-size: 12px
+  letter-spacing: .14em
+  margin-bottom: 8px
+  opacity: .55
+  text-transform: uppercase
+
+.managed-home__intro h1
+  font-size: 30px
+  font-weight: 600
+  line-height: 1.35
+  margin: 0 0 10px
+
+.managed-home__intro p
+  font-size: 15px
+  line-height: 1.8
+  margin: 0
+  opacity: .72
+
+.managed-home__categories
+  display: grid
+  gap: 12px
+  grid-template-columns: repeat(2, minmax(0, 1fr))
+
+.managed-home__category
+  border: 1px solid rgba(127, 127, 127, .22)
+  border-radius: 8px
+  color: inherit
+  display: block
+  padding: 18px 20px
+  text-decoration: none
+  transition: transform .18s ease, border-color .18s ease
+
+.managed-home__category:hover
+  border-color: rgba(127, 127, 127, .48)
+  text-decoration: none
+  transform: translateY(-2px)
+
+.managed-home__category strong
+  display: block
+  font-size: 16px
+  margin-bottom: 7px
+
+.managed-home__category span
+  display: block
+  font-size: 13px
+  line-height: 1.65
+  opacity: .65
+
+@media (max-width: 767px)
+  .managed-home
+    padding-top: 18px
+  .managed-home__categories
+    grid-template-columns: 1fr
+
 $content-desktop = 760px
 $content-desktop-large = 860px
 $content-desktop-largest = 960px
