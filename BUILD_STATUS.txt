@@ -1,0 +1,5 @@
+setup_pages=success
+npm_install_exit_code=0
+hexo_clean_exit_code=0
+hexo_generate_exit_code=0
+build_step=success
