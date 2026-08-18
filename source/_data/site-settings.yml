@@ -1,0 +1,23 @@
+site_title: ChuJie Notes
+subtitle: Hardware · Embedded · Engineering Notes
+description: 个人技术学习与工程实践笔记
+author: ChuJie-WG
+avatar: /images/avatar.svg
+bio: 记录硬件、嵌入式与工程实践中的学习过程。
+github: https://github.com/ChuJie-WG
+email: 953547388@qq.com
+homepage_title: 技术学习与工程笔记
+homepage_intro: 这里记录 DDR、LPDDR、Ethernet、PCIe、Linux 与硬件设计相关的学习笔记和工程经验。
+featured_categories:
+  - name: DDR / LPDDR
+    description: 从控制器、PHY、DRAM 到 PCB 的系统学习笔记
+    url: /categories/DDR/
+  - name: Ethernet
+    description: MAC、RGMII/SGMII、PHY、磁性器件与接口设计
+    url: /categories/Ethernet/
+  - name: PCIe
+    description: PCIe 协议、硬件接口与板级设计笔记
+    url: /categories/PCIe/
+  - name: Linux / Embedded
+    description: 嵌入式 Linux、驱动与系统调试记录
+    url: /categories/Linux/
