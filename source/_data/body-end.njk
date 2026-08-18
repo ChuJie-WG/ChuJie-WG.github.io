@@ -1,0 +1,36 @@
+{% set s = site.data['site-settings'] %}
+{% if s %}
+<section id="managed-home" class="managed-home" hidden>
+  <div class="managed-home__intro">
+    <div class="managed-home__eyebrow">ChuJie Notes</div>
+    <h1>{{ s.homepage_title }}</h1>
+    <p>{{ s.homepage_intro }}</p>
+  </div>
+  {% if s.featured_categories %}
+  <div class="managed-home__categories">
+    {% for item in s.featured_categories %}
+    <a class="managed-home__category" href="{{ item.url }}">
+      <strong>{{ item.name }}</strong>
+      <span>{{ item.description }}</span>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+</section>
+<script>
+(function () {
+  var panel = document.getElementById('managed-home');
+  if (!panel) return;
+  var path = window.location.pathname.replace(/index\.html$/, '');
+  if (path !== '/') {
+    panel.remove();
+    return;
+  }
+  var content = document.querySelector('.main-inner') || document.querySelector('main');
+  var posts = document.querySelector('.posts-expand') || document.querySelector('.posts-collapse');
+  panel.hidden = false;
+  if (posts && posts.parentNode) posts.parentNode.insertBefore(panel, posts);
+  else if (content) content.insertBefore(panel, content.firstChild);
+})();
+</script>
+{% endif %}
