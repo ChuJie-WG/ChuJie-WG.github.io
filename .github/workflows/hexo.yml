@@ -7,6 +7,7 @@ on:
       - BUILD_LOG.txt
       - BUILD_STATUS.txt
       - DEPLOY_STATUS.txt
+      - ACTION_FAILURE_LOG.txt
   workflow_dispatch:
 
 permissions:
