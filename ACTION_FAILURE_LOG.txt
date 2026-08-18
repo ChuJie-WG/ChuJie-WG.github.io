@@ -1,0 +1,11 @@
+workflow_run_id=32159145437
+workflow_url=https://github.com/ChuJie-WG/ChuJie-WG.github.io/actions/runs/32159145437
+conclusion=failure
+
+build	Stop on build failure	﻿2026-08-18T16:14:04.4705864Z ##[group]Run exit 1
+build	Stop on build failure	2026-08-18T16:14:04.4706116Z ^[[36;1mexit 1^[[0m
+build	Stop on build failure	2026-08-18T16:14:04.4742261Z shell: /usr/bin/bash -e {0}
+build	Stop on build failure	2026-08-18T16:14:04.4742500Z env:
+build	Stop on build failure	2026-08-18T16:14:04.4742681Z   GITHUB_PAGES: true
+build	Stop on build failure	2026-08-18T16:14:04.4742888Z ##[endgroup]
+build	Stop on build failure	2026-08-18T16:14:04.4801494Z ##[error]Process completed with exit code 1.
