@@ -1,0 +1,109 @@
+scheme: Mist
+
+darkmode: false
+
+menu:
+  home: / || fa fa-home
+  tags: /tags/ || fa fa-tags
+  categories: /categories/ || fa fa-th
+  archives: /archives/ || fa fa-archive
+  about: /about/ || fa fa-user
+
+menu_settings:
+  icons: true
+  badges: true
+
+favicon:
+  small: /images/favicon.svg
+  medium: /images/favicon.svg
+  apple_touch_icon: /images/favicon.svg
+  safari_pinned_tab: /images/favicon.svg
+
+avatar:
+  url: /images/avatar.svg
+  rounded: true
+  rotated: false
+
+site_state: true
+
+social:
+  GitHub: https://github.com/ChuJie-WG || fab fa-github
+  E-Mail: mailto:953547388@qq.com || fa fa-envelope
+
+social_icons:
+  enable: true
+  icons_only: false
+  transition: true
+
+sidebar:
+  position: left
+  width_expanded: 320
+  display: post
+  padding: 18
+  offset: 12
+
+toc:
+  enable: true
+  number: true
+  wrap: true
+  expand_all: false
+  max_depth: 4
+
+local_search:
+  enable: true
+  top_n_per_article: 1
+  unescape: false
+  preload: false
+
+creative_commons:
+  license: by-nc-sa
+  size: small
+  sidebar: true
+  post: true
+  language: deed.zh
+
+footer:
+  since: 2026
+  powered: true
+
+links_settings:
+  icon: fa fa-globe
+  title: Links
+  layout: block
+links:
+  Hexo: https://hexo.io/
+  NexT: https://theme-next.js.org/
+
+codeblock:
+  copy_button:
+    enable: true
+    show_result: true
+
+back2top:
+  enable: true
+  sidebar: false
+  scrollpercent: true
+
+reading_progress:
+  enable: true
+  start_at: left
+  position: top
+  reversed: false
+  color: '#555'
+  height: 2px
+
+bookmark:
+  enable: false
+
+motion:
+  enable: true
+  async: false
+  transition:
+    post_block: fadeIn
+    post_header: fadeInDown
+    post_body: fadeInDown
+    coll_header: fadeInLeft
+    sidebar: fadeInUp
+
+custom_file_path:
+  style: source/_data/styles.styl
