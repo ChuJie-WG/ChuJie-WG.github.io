@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "private": true,
   "description": "Hexo + NexT.Mist personal technical notes blog",
+  "hexo": {
+    "version": "8.1.2"
+  },
   "scripts": {
     "clean": "hexo clean",
     "build": "hexo generate",
