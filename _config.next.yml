@@ -105,5 +105,13 @@ motion:
     coll_header: fadeInLeft
     sidebar: fadeInUp
 
+# 留言功能已经预留。安装 Utterances GitHub App 后把 enable 改为 true 即可。
+utterances:
+  enable: false
+  repo: ChuJie-WG/ChuJie-WG.github.io
+  issue_term: pathname
+  theme: github-light
+
 custom_file_path:
+  bodyEnd: source/_data/body-end.njk
   style: source/_data/styles.styl
