@@ -1,0 +1,43 @@
+name: Collect Pages failure log
+
+on:
+  workflow_run:
+    workflows: ["Deploy Hexo site to GitHub Pages"]
+    types: [completed]
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  collect:
+    if: github.event.workflow_run.conclusion == 'failure'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout latest main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Collect failed workflow logs
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RUN_ID: ${{ github.event.workflow_run.id }}
+          REPO: ${{ github.repository }}
+        shell: bash
+        run: |
+          echo "workflow_run_id=$RUN_ID" > ACTION_FAILURE_LOG.txt
+          echo "workflow_url=${{ github.event.workflow_run.html_url }}" >> ACTION_FAILURE_LOG.txt
+          echo "conclusion=${{ github.event.workflow_run.conclusion }}" >> ACTION_FAILURE_LOG.txt
+          echo "" >> ACTION_FAILURE_LOG.txt
+          gh run view "$RUN_ID" --repo "$REPO" --log-failed >> ACTION_FAILURE_LOG.txt 2>&1 || true
+
+      - name: Save failure log
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull --rebase origin main || true
+          git add ACTION_FAILURE_LOG.txt
+          git commit -m "Save failed Pages workflow log [skip ci]" || true
+          git push || true
