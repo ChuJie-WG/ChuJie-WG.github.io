@@ -1,0 +1,67 @@
+backend:
+  name: github
+  repo: ChuJie-WG/ChuJie-WG.github.io
+  branch: main
+
+site_url: https://chujie-wg.github.io
+display_url: https://chujie-wg.github.io
+logo_url: /images/avatar.svg
+
+media_folder: source/images/uploads
+public_folder: /images/uploads
+publish_mode: simple
+
+collections:
+  - name: posts
+    label: 博客文章
+    label_singular: 文章
+    folder: source/_posts
+    create: true
+    delete: true
+    extension: md
+    format: frontmatter
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    summary: '{{title}} · {{date}}'
+    fields:
+      - { label: 标题, name: title, widget: string }
+      - { label: 发布时间, name: date, widget: datetime, format: 'YYYY-MM-DD HH:mm:ss' }
+      - { label: 摘要, name: description, widget: text, required: false }
+      - label: 分类
+        name: categories
+        widget: list
+        required: false
+        field: { label: 分类, name: category, widget: string }
+      - label: 标签
+        name: tags
+        widget: list
+        required: false
+        field: { label: 标签, name: tag, widget: string }
+      - { label: 封面图, name: cover, widget: image, required: false }
+      - { label: 正文, name: body, widget: markdown }
+
+  - name: site_settings
+    label: 网站设置
+    files:
+      - label: 前台与个人资料
+        name: general
+        file: source/_data/site-settings.yml
+        format: yml
+        fields:
+          - { label: 网站标题, name: site_title, widget: string }
+          - { label: 网站副标题, name: subtitle, widget: string }
+          - { label: 网站说明, name: description, widget: text }
+          - { label: 作者昵称, name: author, widget: string }
+          - { label: 头像, name: avatar, widget: image }
+          - { label: 个人简介, name: bio, widget: text }
+          - { label: GitHub 地址, name: github, widget: string }
+          - { label: 邮箱, name: email, widget: string }
+          - { label: 首页主标题, name: homepage_title, widget: string }
+          - { label: 首页介绍, name: homepage_intro, widget: text }
+          - label: 首页大分类
+            name: featured_categories
+            widget: list
+            summary: '{{fields.name}}'
+            fields:
+              - { label: 分类名称, name: name, widget: string }
+              - { label: 简介, name: description, widget: text }
+              - { label: 跳转地址, name: url, widget: string, hint: '例如 /categories/DDR/' }
